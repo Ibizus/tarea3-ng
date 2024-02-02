@@ -1,16 +1,20 @@
+<div class="row bg-primary">
+    <div class="col text-center">-X- PRODUCTOS</div>
+</div>
+
 <div class="row" *ngIf="productos.length == 0">
     <div class="col-12 bg-danger">
         No hay productos
     </div>
 </div>
-<div class="row" *ngFor="let item of productos">
-    <div class="col-2">
+<div class="row mt-1" *ngFor="let item of productos">
+    <div class="col-3">
         {{ item.nombre }}
     </div>
-    <div class="col-1">
+    <div class="col-2">
         {{ item.precio }}
     </div>
-    <div class="col-2">
+    <div class="col-3">
         {{ item.categoria }}
     </div>
     <div class="col-2">
