@@ -17,10 +17,14 @@
     <div class="col-3">
         {{ item.categoria }}
     </div>
-    <div class="col-2">
-        <button (click)="eliminar(item.nombre)" type="button" name="eliminar[]" id="eliminar[]" class="btn btn-primary" btn-lg btn-block>Eliminar</button>
-    </div>
+</div>
+<div class="row mt-1">
+    <input type="text" #nombreproducto class="col-4 ml-3 mr-2">
+    <button (click)="eliminar(nombreproducto.value)" type="button" name="eliminar[]" id="eliminar[]" class="btn btn-primary" btn-lg btn-block>Eliminar</button>
 </div>
 <div class="warning bg-warning" *ngIf="eliminado!=null">
         Elemento eliminado: {{eliminado.nombre}}, {{eliminado.precio}}, {{eliminado.categoria}}
+</div>
+<div class="warning bg-warning" *ngIf="encontrado==false">
+    Elemento no encontrado
 </div>

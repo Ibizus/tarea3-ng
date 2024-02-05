@@ -11,3 +11,14 @@
 <div class="warning bg-warning mt-3">
   El nombre del producto es obligatorio.
 </div>
+
+<form (ngSubmit)="onSubmit()" #form="">
+  <div class="row">
+    <div col-2>
+      <input type="text" #nombreproducto placeholder="Nombre">
+      <input type="text" #precio placeholder="Precio">
+      <input type="text" #categoria placeholder="categoria">
+      <button (click)="onSubmit()" type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+  </div>
+</form>

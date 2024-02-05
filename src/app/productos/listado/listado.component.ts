@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { Producto } from '../productos.module';
+import { ProductosService } from '../../services/productos.service';
 
 
 @Component({
@@ -13,24 +14,22 @@ import { Producto } from '../productos.module';
 
 export class ListadoComponent {
 
-  productos: Producto[]= [
-    {nombre: "Bolígrafo", precio: 2.50, categoria: "Papelería"},
-    {nombre: "Martillo", precio: 5, categoria: "Ferretería"},
-    {nombre: "Cuaderno", precio: 3.50, categoria: "Papelería"},
-    {nombre: "Regla", precio: 1.50, categoria: "Papelería"},
-    {nombre: "Destornillador", precio: 4.50, categoria: "Ferretería"}
-  ]
+  productos:Producto[]=[];
   eliminado: Producto|null = null;
+  encontrado: boolean=true;
+
+  constructor(private _productosServicios:ProductosService){
+    this.productos = _productosServicios.productos;
+  }
 
   eliminar(producto:string):void {
-    let pos=this.productos.findIndex((item)=> item.nombre == producto );
-    // console.log("Eliminando " + producto + " de posición " + pos)
-    if(pos>=0) {
-      this.eliminado = this.productos[pos];
-      this.productos.splice(pos, 1);
-    }
+    this.eliminado = this._productosServicios.eliminar(producto);
+    this.encontrado = (this.eliminado!=null);
+
     setTimeout(() => {
       this.eliminado = null;
+      this.encontrado = true;
     }, (1000));
   }
+
 }
