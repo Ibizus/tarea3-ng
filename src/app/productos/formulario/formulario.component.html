@@ -1,24 +1,41 @@
 <div class="row bg-primary">
     <div class="col text-center">FORMULARIO</div>
 </div>
-<div class="form-group mt-1">
+
+<!-- <div class="form-group mt-1">
   <input type="text" class="form-control" name="" id="" placeholder="Nombre">
 </div>
 <div class="form-group">
     <input type="text" class="form-control" name="" id="" placeholder="0">
 </div>
-<button type="submit" class="btn btn-primary">Enviar</button>
-<div class="warning bg-warning mt-3">
-  El nombre del producto es obligatorio.
-</div>
+<button type="submit" class="btn btn-primary">Enviar</button> -->
 
-<form (ngSubmit)="onSubmit()" #form="">
+
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
   <div class="row">
-    <div col-2>
-      <input type="text" #nombreproducto placeholder="Nombre">
-      <input type="text" #precio placeholder="Precio">
-      <input type="text" #categoria placeholder="categoria">
-      <button (click)="onSubmit()" type="submit" class="btn btn-primary">Enviar</button>
+    <div class="col-8">
+      <input class="col-8 mt-1" 
+              type="text" #nombreproducto
+              name="name"
+              [(ngModel)]="datosformulario.nombre"
+              placeholder="Nombre">
+      <input class="col-8 mt-1" 
+              type="text" #precio
+              name="precio"
+              [(ngModel)]="datosformulario.precio"
+              placeholder="Precio">
+      <input class="col-8 mt-1" 
+              type="text" #categoria
+              name="categoria"
+              [(ngModel)]="datosformulario.categoria"
+              placeholder="categoria">
+      <button type="submit" id="submit" class="btn btn-primary col-6 mt-1">Enviar</button>
     </div>
   </div>
 </form>
+
+{{ datosformulario | json }}
+
+<div class="warning bg-warning mt-1">
+  El nombre del producto es obligatorio.
+</div>
