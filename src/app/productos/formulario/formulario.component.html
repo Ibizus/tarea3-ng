@@ -13,23 +13,35 @@
 
 <form (ngSubmit)="onSubmit(form)" #form="ngForm">
   <div class="row">
-    <div class="col-8">
-      <input class="col-8 mt-1" 
-              type="text" #nombreproducto
-              name="name"
+    <div class="col-12">
+
+      <input class="col-6 mt-1 form-control" 
+              type="text" 
+              #nombreproducto = "ngModel"
+              name="nombre"
               [(ngModel)]="datosformulario.nombre"
-              placeholder="Nombre">
-      <input class="col-8 mt-1" 
-              type="text" #precio
+              placeholder="Nombre"
+              required>
+              <div *ngIf="nombreproducto.errors?.['required']" class="col-6 alert alert-danger">Nombre requerido</div>
+
+      <input class="col-6 mt-1 form-control" 
+              type="number" 
+              #precio = "ngModel"
               name="precio"
               [(ngModel)]="datosformulario.precio"
-              placeholder="Precio">
-      <input class="col-8 mt-1" 
+              placeholder="Precio"
+              min="1"
+              required>
+              <div *ngIf="precio.errors?.['required']" class="col-6 alert alert-danger">Precio requerido</div>
+              <div *ngIf="precio.errors?.['min']" class="col-6 alert alert-danger">No puede ser 0</div>
+
+      <input class="col-6 mt-1 form-control" 
               type="text" #categoria
               name="categoria"
               [(ngModel)]="datosformulario.categoria"
               placeholder="categoria">
-      <button type="submit" id="submit" class="btn btn-primary col-6 mt-1">Enviar</button>
+
+      <button [disabled]="!form.valid" type="submit" id="submit" class="btn btn-primary col-6 mt-1">Enviar</button>
     </div>
   </div>
 </form>

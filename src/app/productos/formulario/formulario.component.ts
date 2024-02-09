@@ -1,4 +1,4 @@
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ProductosService } from '../../services/productos.service';
@@ -8,7 +8,7 @@ import { Producto } from '../productos.module';
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [FormsModule, JsonPipe],
+  imports: [FormsModule, JsonPipe, NgIf],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.scss'
 })
