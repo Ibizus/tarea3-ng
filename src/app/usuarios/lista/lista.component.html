@@ -1,1 +1,30 @@
-<p>lista works!</p>
+<div class="row bg-primary">
+    <div class="col text-center">{{ usuarios.length }} USUARIOS</div>
+</div>
+
+<div class="row" *ngIf="usuarios.length == 0">
+    <div class="col-12 bg-danger">
+        No hay usuarios
+    </div>
+</div>
+<div class="row mt-1" *ngFor="let item of usuarios">
+    <div class="col-3">
+        {{ item.nombre }}
+    </div>
+    <div class="col-2">
+        {{ item.edad }}
+    </div>
+    <div class="col-3">
+        {{ item.profesion }}
+    </div>
+</div>
+<div class="row mt-1">
+    <input type="text" #nombreusuario class="col-4 ml-3 mr-2">
+    <button (click)="eliminar(nombreusuario.value)" type="button" name="eliminar[]" id="eliminar[]" class="btn btn-primary" btn-lg btn-block>Eliminar</button>
+</div>
+<div class="warning bg-warning" *ngIf="eliminado!=null">
+    Usuario eliminado: {{eliminado.nombre}}, {{eliminado.edad}}, {{eliminado.profesion}}
+</div>
+<div class="warning bg-warning" *ngIf="encontrado==false">
+    Usuario no encontrado
+</div>

@@ -1,1 +1,44 @@
-<p>form works!</p>
+<div class="row bg-primary">
+    <div class="col text-center">FORMULARIO</div>
+</div>
+
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div class="row">
+    <div class="col-12">
+
+      <input class="col-6 mt-1 form-control" 
+              type="text" 
+              #nombreusuario = "ngModel"
+              name="nombre"
+              [(ngModel)]="datosformulario.nombre"
+              placeholder="Nombre"
+              required>
+              <div *ngIf="nombreusuario.errors?.['required']" class="col-6 alert alert-danger">Nombre requerido</div>
+
+      <input class="col-6 mt-1 form-control" 
+              type="number" 
+              #edad = "ngModel"
+              name="edad"
+              [(ngModel)]="datosformulario.edad"
+              placeholder="Edad"
+              min="18"
+              required>
+              <div *ngIf="edad.errors?.['required']" class="col-6 alert alert-danger">Edad requerida</div>
+              <div *ngIf="edad.errors?.['min']" class="col-6 alert alert-danger">Debe ser mayor de edad</div>
+
+      <input class="col-6 mt-1 form-control" 
+              type="text" #profesion
+              name="profesion"
+              [(ngModel)]="datosformulario.profesion"
+              placeholder="profesion">
+
+      <button [disabled]="!form.valid" type="submit" id="submit" class="btn btn-primary col-6 mt-1">Enviar</button>
+    </div>
+  </div>
+</form>
+
+{{ datosformulario | json }}
+
+<div class="warning bg-warning mt-1">
+  El nombre del usuario es obligatorio.
+</div>
