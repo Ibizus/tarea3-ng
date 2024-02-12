@@ -13,7 +13,7 @@
               [(ngModel)]="datosformulario.nombre"
               placeholder="Nombre"
               required>
-              <div *ngIf="nombreusuario.errors?.['required']" class="col-6 alert alert-danger">Nombre requerido</div>
+              <div *ngIf="nombreusuario.errors?.['required'] && nombreusuario.touched" class="alert alert-danger">Nombre requerido</div>
 
       <input class="col-6 mt-1 form-control" 
               type="number" 
@@ -23,8 +23,8 @@
               placeholder="Edad"
               min="18"
               required>
-              <div *ngIf="edad.errors?.['required']" class="col-6 alert alert-danger">Edad requerida</div>
-              <div *ngIf="edad.errors?.['min']" class="col-6 alert alert-danger">Debe ser mayor de edad</div>
+              <div *ngIf="edad.errors?.['required']" class="alert alert-danger">Edad requerida</div>
+              <div *ngIf="edad.errors?.['min']" class="alert alert-danger">Debe ser mayor de edad</div>
 
       <input class="col-6 mt-1 form-control" 
               type="text" #profesion
@@ -39,6 +39,3 @@
 
 {{ datosformulario | json }}
 
-<div class="warning bg-warning mt-1">
-  El nombre del usuario es obligatorio.
-</div>

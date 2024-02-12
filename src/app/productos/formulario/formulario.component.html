@@ -22,7 +22,7 @@
               [(ngModel)]="datosformulario.nombre"
               placeholder="Nombre"
               required>
-              <div *ngIf="nombreproducto.errors?.['required']" class="col-6 alert alert-danger">Nombre requerido</div>
+              <div *ngIf="nombreproducto.errors?.['required'] && nombreproducto.touched" class="col-6 alert alert-danger">Nombre requerido</div>
 
       <input class="col-6 mt-1 form-control" 
               type="number" 
@@ -30,10 +30,10 @@
               name="precio"
               [(ngModel)]="datosformulario.precio"
               placeholder="Precio"
-              min="1"
+              min="0.01"
               required>
-              <div *ngIf="precio.errors?.['required']" class="col-6 alert alert-danger">Precio requerido</div>
-              <div *ngIf="precio.errors?.['min']" class="col-6 alert alert-danger">No puede ser 0</div>
+              <div *ngIf="precio.errors?.['required'] && nombreproducto.touched" class="col-6 alert alert-danger">Precio requerido</div>
+              <div *ngIf="precio.errors?.['min'] && nombreproducto.touched" class="col-6 alert alert-danger">No puede ser 0</div>
 
       <input class="col-6 mt-1 form-control" 
               type="text" #categoria
@@ -48,6 +48,3 @@
 
 {{ datosformulario | json }}
 
-<div class="warning bg-warning mt-1">
-  El nombre del producto es obligatorio.
-</div>
